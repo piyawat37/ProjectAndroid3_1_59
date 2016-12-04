@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.evitected.math_piece.MainActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_menu"
+        android:scaleType="centerCrop">
+    </ImageView>
+    <ImageView
+        android:id="@+id/imgHeader"
+        android:src="@drawable/header2"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/layout_menu"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imgHeader"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnPlay"
+            style="@style/btn_brown"
+            android:text="PLAY" />
+        <Button
+            android:id="@+id/btnRanked"
+            style="@style/btn_brown"
+            android:text="RANKING" />
+        <Button
+            android:id="@+id/btnContact"
+            style="@style/btn_brown"
+            android:text="CONTACT" />
+        <Button
+            android:id="@+id/btnExit"
+            style="@style/btn_brown"
+            android:text="EXIT" />
+    </LinearLayout>
+</RelativeLayout>
