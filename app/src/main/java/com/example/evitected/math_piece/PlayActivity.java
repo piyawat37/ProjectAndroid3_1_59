@@ -39,6 +39,54 @@ public class PlayActivity extends AppCompatActivity {
         int i = 1;
         if(i == 1){
             gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getLockStateDefault()));
+        }else if(i == 2){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState2()));
+        }else if(i == 3){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState3()));
+        }else if(i == 4){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState4()));
+        }else if(i == 5){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState5()));
+        }else if(i == 6){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState6()));
+        }else if(i == 7){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState7()));
+        }else if(i == 8){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState8()));
+        }else if(i == 9){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState9()));
+        }else if(i == 10){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState10()));
+        }else if(i == 11){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState11()));
+        }else if(i == 12){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState12()));
+        }else if(i == 13){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState13()));
+        }else if(i == 14){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState14()));
+        }else if(i == 15){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState15()));
+        }else if(i == 16){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState16()));
+        }else if(i == 17){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState17()));
+        }else if(i == 18){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState18()));
+        }else if(i == 19){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState19()));
+        }else if(i == 20){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState20()));
+        }else if(i == 21){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState21()));
+        }else if(i == 22){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState22()));
+        }else if(i == 23){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState23()));
+        }else if(i == 24){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState24()));
+        }else if(i == 25){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getState25()));
         }
 
         setOnClickState();
