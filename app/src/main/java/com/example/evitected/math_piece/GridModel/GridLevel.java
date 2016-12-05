@@ -13,6 +13,15 @@ public class GridLevel {
             R.drawable.c16, R.drawable.c17, R.drawable.c18, R.drawable.c19, R.drawable.c20,
             R.drawable.c21, R.drawable.c22, R.drawable.c23, R.drawable.c24, R.drawable.c25,
     };
+    private int[] Answer = new int[]{
+            R.drawable.a0, R.drawable.a1, R.drawable.a2, R.drawable.a3, R.drawable.a4,
+            R.drawable.a5, R.drawable.a6, R.drawable.a7, R.drawable.a8, R.drawable.a9,
+    };
+
+    public int[] getAnswer() {
+        return Answer;
+    }
+
     public int[] getLevelState() {
         return levelState;
     }
