@@ -4,19 +4,22 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.evitected.math_piece.ClassModel.CustomAdapter;
 import com.example.evitected.math_piece.GridModel.GridLevel;
 import com.example.evitected.math_piece.PlayingState.PlayNStateActivity;
 
 public class PlayActivity extends AppCompatActivity {
 
-    private Button btnBack;
+    private Button btnPlayBack;
     private GridView gvLevel;
     GridLevel gvObj = new GridLevel();
 
@@ -27,32 +30,40 @@ public class PlayActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         bindWidget();
         setFontAwesome();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, gvObj.getLevelState());
 
-        gvLevel.setAdapter(adapter);
+        createGridviewState();
+
+    }
+
+    private void createGridviewState() {
+        int i = 1;
+        if(i == 1){
+            gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getLockStateDefault()));
+        }
+
+        setOnClickState();
+    }
+
+    private void setOnClickState() {
         gvLevel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-               /* Toast.makeText(getApplicationContext(),
-                        ((TextView) v).getText()  , Toast.LENGTH_SHORT).show();*/
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int positionClick = position+1;
                 Intent i = new Intent(PlayActivity.this, PlayNStateActivity.class);
+                i.putExtra("positionClick", positionClick);
                 startActivity(i);
-                if(((TextView) v).getText().equals("1")){
-
-                }
             }
         });
     }
+
     private void setFontAwesome() {
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
-        btnBack.setTypeface(font);
-        btnBack.setText("\uf053");
+        btnPlayBack.setTypeface(font);
+        btnPlayBack.setText("\uf053");
     }
 
     private void bindWidget() {
         gvLevel = (GridView) findViewById(R.id.gvLevel);
-        btnBack = (Button)findViewById( R.id.back);
+        btnPlayBack = (Button)findViewById( R.id.btnPlayBack);
     }
 }
