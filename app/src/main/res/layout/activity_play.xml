@@ -15,14 +15,6 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="50dp">
-        <Button
-            android:id="@+id/back"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:text="back"
-            android:textSize="20sp"
-            />
         <TextView
             android:id="@+id/tvTime"
             android:layout_weight="5"
@@ -47,4 +39,14 @@
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp">
     </GridView>
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/gvLevel"
+        android:id="@+id/btnPlayBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        android:textSize="20sp"
+        />
 </RelativeLayout>

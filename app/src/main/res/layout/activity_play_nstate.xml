@@ -3,38 +3,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:oandroid="http://schemas.android.com/apk/res-auto"
     tools:context=".PlayingState.PlayNStateActivity">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/play"
         android:scaleType="centerCrop"/>
-    <LinearLayout
-        android:id="@+id/layout_header"
-        android:background="@color/colorBrown"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <Button
-            android:id="@+id/back"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:text="back"
-            android:textSize="20sp"
-            />
-    </LinearLayout>
-    <GridView
-        android:layout_below="@+id/layout_header"
-        android:id="@+id/gvLevel_1"
+    <TextView
         android:layout_centerHorizontal="true"
-        android:numColumns="auto_fit"
-        android:layout_width="500dp"
-        android:columnWidth="90dp"
-        android:gravity="center_horizontal|center_vertical|center"
-        android:layout_height="wrap_content"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp">
-    </GridView>
+        android:layout_below="@id/layout_header"
+        android:id="@+id/test"
+        android:text="TEST"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imgQuestion"
+            android:src="@drawable/quest1"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <LinearLayout
+            android:background="@drawable/answer_layout_white"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp">
+            <LinearLayout
+                android:paddingTop="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="13dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+                <TextView
+                    android:id="@+id/tvAnswer"
+                    android:padding="15dp"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:background="@drawable/textview_answer"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:id="@+id/btnEscape"
+                    android:background="@drawable/x_mark"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:background="@drawable/check_mark"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:paddingLeft="15dp"
+                android:paddingRight="13dp"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+                <GridView
+                    android:layout_gravity="center"
+                    android:gravity="top"
+                    android:id="@+id/gvAnswer"
+                    android:numColumns="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </GridView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </RelativeLayout>
