@@ -1,13 +1,16 @@
-package com.example.evitected.math_piece;
+package com.example.evitected.math_piece.ClassModel;
 
 import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.example.evitected.math_piece.R;
 
 /**
  * Created by Evitected on 24/11/2559.
@@ -44,7 +47,7 @@ public class CustomAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.activity_layout__gridview, null);
             myHolder = new ViewHolder();
             myHolder.operateLine = (ImageView) convertView.findViewById(R.id.operateLine);
-            myHolder.operateLine.setOnLongClickListener(new LongPressListener());
+           // myHolder.operateLine.setOnTouchListener(new PressListener());
             convertView.setTag(myHolder);
         } else{
             myHolder = (ViewHolder) convertView.getTag();
@@ -55,9 +58,11 @@ public class CustomAdapter extends BaseAdapter {
     public class ViewHolder{
         ImageView operateLine;
     }
-    class LongPressListener implements View.OnLongClickListener {
+    /*
+    class PressListener implements View.OnTouchListener{
+
         @Override
-        public boolean onLongClick(View view) {
+        public boolean onTouch(View view, MotionEvent event) {
             final ClipData data = ClipData.newPlainText("", "");
             View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
             view.startDrag(data, shadowBuilder, view, 0);
@@ -65,4 +70,5 @@ public class CustomAdapter extends BaseAdapter {
             return true;
         }
     }
+    */
 }
