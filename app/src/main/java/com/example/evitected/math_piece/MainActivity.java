@@ -9,18 +9,34 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.evitected.math_piece.ClassModel.DatabaseSQLite;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText etPlayerName;
     private Button btnPlay, btnRanked, btnContact, btnExit;
+
+
+    DatabaseSQLite myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+        myDB = new DatabaseSQLite(this,2);
+
         bindWidget();
         setEvent();
+
+        //Method Emergency Reset State
+        //ResetState();
+
+    }
+
+    private void ResetState() {
+        boolean result = myDB.ResetState();
     }
 
     private void setEvent() {
