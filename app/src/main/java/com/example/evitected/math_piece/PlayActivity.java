@@ -1,7 +1,9 @@
 package com.example.evitected.math_piece;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Typeface;
+import android.provider.Settings.Secure;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.evitected.math_piece.ClassModel.CustomAdapter;
+import com.example.evitected.math_piece.ClassModel.DatabaseSQLite;
 import com.example.evitected.math_piece.GridModel.GridLevel;
 import com.example.evitected.math_piece.PlayingState.PlayNStateActivity;
 
@@ -22,21 +25,39 @@ public class PlayActivity extends AppCompatActivity {
     private Button btnPlayBack;
     private GridView gvLevel;
     GridLevel gvObj = new GridLevel();
+    int State;
+    int i;
+    private DatabaseSQLite myDB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         getSupportActionBar().hide();
+        myDB = new DatabaseSQLite(this,2);
+
         bindWidget();
         setFontAwesome();
-
+            CheckDevice_State();
         createGridviewState();
 
     }
 
+    private void CheckDevice_State() {
+        Cursor result = myDB.getDeviceID();
+        int row = result.getCount();
+        if(row > 0){
+            State = result.getInt(2);
+            //Toast.makeText(PlayActivity.this, String.valueOf(State), Toast.LENGTH_SHORT).show();
+            i = State;
+        }else{
+            String device_id = Secure.getString(this.getContentResolver(), Secure.ANDROID_ID);
+            boolean newDevice = myDB.insertNewDevice(device_id);
+        }
+    }
+
     private void createGridviewState() {
-        int i = 1;
         if(i == 1){
             gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getLockStateDefault()));
         }else if(i == 2){
@@ -98,8 +119,13 @@ public class PlayActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int positionClick = position+1;
                 Intent i = new Intent(PlayActivity.this, PlayNStateActivity.class);
-                i.putExtra("positionClick", positionClick);
-                startActivity(i);
+                if(positionClick <= State){
+                    i.putExtra("positionClick", positionClick);
+                    startActivity(i);
+                    finish();
+                }else{
+                    Toast.makeText(PlayActivity.this, "Error!!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
