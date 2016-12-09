@@ -1,7 +1,10 @@
 package com.example.evitected.math_piece.PlayingState;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.provider.Settings.Secure;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.evitected.math_piece.ClassModel.CustomAdapter;
+import com.example.evitected.math_piece.ClassModel.DatabaseSQLite;
 import com.example.evitected.math_piece.GridModel.GridLevel;
+import com.example.evitected.math_piece.PlayActivity;
 import com.example.evitected.math_piece.R;
 
 public class PlayNStateActivity extends AppCompatActivity {
@@ -30,11 +35,14 @@ public class PlayNStateActivity extends AppCompatActivity {
     private TextView tvAnswer;
     private Button btnSubmit, btnEscape;
 
+    DatabaseSQLite myDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_nstate);
         getSupportActionBar().hide();
+        myDB = new DatabaseSQLite(this, 2);
         bindWidget();
         setAnswer();
         //setFontAwesome();
@@ -97,6 +105,21 @@ public class PlayNStateActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
+                        Intent i = new Intent(PlayNStateActivity.this, PlayActivity.class);
+                        startActivity(i);
+                    }
+                }).create().show();
+    }
 
     private void setEventButton() {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +130,10 @@ public class PlayNStateActivity extends AppCompatActivity {
                     if(state == 1){
                         if((ans == answer[0])){
                             Toast.makeText(PlayNStateActivity.this, "true", Toast.LENGTH_SHORT).show();
+                            boolean result = myDB.updateState(1,state+1);
+                            finish();
+                                    Intent i = new Intent(PlayNStateActivity.this, PlayActivity.class);
+                                    startActivity(i);
                         }else {
                             Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
                         }
