@@ -2,6 +2,7 @@ package com.example.evitected.math_piece.PlayingState;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.provider.Settings.Secure;
 import android.support.v7.app.AlertDialog;
@@ -129,12 +130,20 @@ public class PlayNStateActivity extends AppCompatActivity {
                     int ans = Integer.parseInt(tvAnswer.getText().toString().trim());
                     if(state == 1){
                         if((ans == answer[0])){
-                            Toast.makeText(PlayNStateActivity.this, "true", Toast.LENGTH_SHORT).show();
-                            boolean result = myDB.updateState(1,state+1);
-                            finish();
-                                    Intent i = new Intent(PlayNStateActivity.this, PlayActivity.class);
-                                    startActivity(i);
+                            answerTrue();
                         }else {
+                            Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
+                        }
+                    }else if(state == 2){
+                        if(ans == answer[1]){
+                            answerTrue();
+                        }else{
+                            Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
+                        }
+                    }else if(state == 3){
+                        if(ans == answer[2]){
+                            answerTrue();
+                        }else{
                             Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -160,15 +169,31 @@ public class PlayNStateActivity extends AppCompatActivity {
         });
     }
 
+
+    //Update Fixed Bug State
+    private void answerTrue() {
+        Cursor CheckStateCount = myDB.getDeviceID();
+        int row = CheckStateCount.getCount();
+        if(row > 0){
+            int LastState = CheckStateCount.getInt(2);
+            if(LastState < state+1){
+                 myDB.updateState(1,state+1);
+            }
+        }
+        finish();
+        Intent i = new Intent(PlayNStateActivity.this, PlayActivity.class);
+        startActivity(i);
+    }
+
     private void getState() {
         Intent i = getIntent();
         state = i.getIntExtra("positionClick",0);
         switch(state){
             case 1: imgQuestion.setImageResource(R.drawable.quest1);
                 break;
-            case 2: imgQuestion.setImageResource(R.drawable.a0);
+            case 2: imgQuestion.setImageResource(R.drawable.quest2);
                 break;
-            case 3: test.setText(String.valueOf(state));
+            case 3: imgQuestion.setImageResource(R.drawable.quest3);
                 break;
             case 4: test.setText(String.valueOf(state));
                 break;
@@ -218,7 +243,7 @@ public class PlayNStateActivity extends AppCompatActivity {
     }
 
     private void setAnswer() {
-        answer[0] = 3612;
+        answer = new int[]{3612, 35, 8};
     }
 
     private void setFontAwesome() {
