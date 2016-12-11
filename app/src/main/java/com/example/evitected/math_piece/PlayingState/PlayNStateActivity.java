@@ -170,7 +170,7 @@ public class PlayNStateActivity extends AppCompatActivity {
     }
 
 
-    //Update Fixed Bug State
+    //Update Fixed Bug State 11-12-2559 12.03
     private void answerTrue() {
         Cursor CheckStateCount = myDB.getDeviceID();
         int row = CheckStateCount.getCount();
