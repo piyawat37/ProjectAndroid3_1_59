@@ -27,7 +27,6 @@ import com.example.evitected.math_piece.R;
 public class PlayNStateActivity extends AppCompatActivity {
 
     GridLevel gvObj = new GridLevel();
-    private TextView test;
     int state;
     int[] answer = new int[25];
     private String oldText;
@@ -37,6 +36,7 @@ public class PlayNStateActivity extends AppCompatActivity {
     private Button btnSubmit, btnEscape;
 
     DatabaseSQLite myDB;
+    private ImageView stateHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,6 @@ public class PlayNStateActivity extends AppCompatActivity {
         myDB = new DatabaseSQLite(this, 2);
         bindWidget();
         setAnswer();
-        //setFontAwesome();
         create_GridAnswer();
         getState();
         setEventButton();
@@ -189,71 +188,75 @@ public class PlayNStateActivity extends AppCompatActivity {
         Intent i = getIntent();
         state = i.getIntExtra("positionClick",0);
         switch(state){
-            case 1: imgQuestion.setImageResource(R.drawable.quest1);
+            case 1:
+                imgQuestion.setImageResource(R.drawable.quest1);
+                stateHeader.setImageResource(R.drawable.s1);
                 break;
-            case 2: imgQuestion.setImageResource(R.drawable.quest2);
+            case 2:
+                imgQuestion.setImageResource(R.drawable.quest2);
+                stateHeader.setImageResource(R.drawable.s2);
                 break;
-            case 3: imgQuestion.setImageResource(R.drawable.quest3);
+            case 3:
+                imgQuestion.setImageResource(R.drawable.quest3);
+                stateHeader.setImageResource(R.drawable.s3);
                 break;
-            case 4: test.setText(String.valueOf(state));
+            case 4:
+                imgQuestion.setImageResource(R.drawable.quest4);
+                stateHeader.setImageResource(R.drawable.s4);
                 break;
-            case 5: test.setText(String.valueOf(state));
+            case 5:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s5);
                 break;
-            case 6: test.setText(String.valueOf(state));
+            case 6:
                 break;
-            case 7: test.setText(String.valueOf(state));
+            case 7:
                 break;
-            case 8: test.setText(String.valueOf(state));
+            case 8:
                 break;
-            case 9: test.setText(String.valueOf(state));
+            case 9:
                 break;
-            case 10: test.setText(String.valueOf(state));
+            case 10:
                 break;
-            case 11: test.setText(String.valueOf(state));
+            case 11:
                 break;
-            case 12: test.setText(String.valueOf(state));
+            case 12:
                 break;
-            case 13: test.setText(String.valueOf(state));
+            case 13:
                 break;
-            case 14: test.setText(String.valueOf(state));
+            case 14:
                 break;
-            case 15: test.setText(String.valueOf(state));
+            case 15:
                 break;
-            case 16: test.setText(String.valueOf(state));
+            case 16:
                 break;
-            case 17: test.setText(String.valueOf(state));
+            case 17:
                 break;
-            case 18: test.setText(String.valueOf(state));
+            case 18:
                 break;
-            case 19: test.setText(String.valueOf(state));
+            case 19:
                 break;
-            case 20: test.setText(String.valueOf(state));
+            case 20:
                 break;
-            case 21: test.setText(String.valueOf(state));
+            case 21:
                 break;
-            case 22: test.setText(String.valueOf(state));
+            case 22:
                 break;
-            case 23: test.setText(String.valueOf(state));
+            case 23:
                 break;
-            case 24: test.setText(String.valueOf(state));
+            case 24:
                 break;
-            case 25: test.setText(String.valueOf(state));
+            case 25:
                 break;
         }
     }
 
     private void setAnswer() {
-        answer = new int[]{3612, 35, 8};
-    }
-
-    private void setFontAwesome() {
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
-        //btnBack.setTypeface(font);
-        //btnBack.setText("\uf053");
+        answer = new int[]{3612, 35, 8, 98, 256};
     }
 
     private void bindWidget() {
-        test = (TextView) findViewById(R.id.test);
+        stateHeader = (ImageView) findViewById(R.id.stateHeader);
         gvAnswer = (GridView) findViewById(R.id.gvAnswer);
         imgQuestion = (ImageView) findViewById(R.id.imgQuestion);
         tvAnswer = (TextView) findViewById(R.id.tvAnswer);
