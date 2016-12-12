@@ -41,7 +41,6 @@ public class PlayActivity extends AppCompatActivity {
         setFontAwesome();
             CheckDevice_State();
         createGridviewState();
-
     }
 
     private void CheckDevice_State() {
@@ -120,14 +119,26 @@ public class PlayActivity extends AppCompatActivity {
                 int positionClick = position+1;
                 Intent i = new Intent(PlayActivity.this, PlayNStateActivity.class);
                 if(positionClick <= State){
-                    i.putExtra("positionClick", positionClick);
-                    startActivity(i);
-                    finish();
+                    if(lockState(positionClick) == true){
+                        Toast.makeText(PlayActivity.this, "This state has lock. Please wait next Update State.", Toast.LENGTH_SHORT).show();
+                    }else{
+                        i.putExtra("positionClick", positionClick);
+                        startActivity(i);
+                        finish();
+                    }
                 }else{
                     Toast.makeText(PlayActivity.this, "Try to Complete State Before!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+    //Update Developer Control. { Lock State Wait Update State } 12-12-2559 18.17
+    private boolean lockState(int position) {
+        if (position == 6){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     private void setFontAwesome() {
