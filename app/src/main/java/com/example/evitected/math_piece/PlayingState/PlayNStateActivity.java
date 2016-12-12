@@ -145,6 +145,18 @@ public class PlayNStateActivity extends AppCompatActivity {
                         }else{
                             Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
                         }
+                    }else if(state == 4){
+                        if(ans == answer[3]){
+                            answerTrue();
+                        }else{
+                            Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
+                        }
+                    }else if(state == 5){
+                        if(ans == answer[4]){
+                            answerTrue();
+                        }else{
+                            Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }else{
                     Toast.makeText(PlayNStateActivity.this, "false", Toast.LENGTH_SHORT).show();
@@ -184,6 +196,8 @@ public class PlayNStateActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+
+    //Update State 5 12-12-2559 18.06
     private void getState() {
         Intent i = getIntent();
         state = i.getIntExtra("positionClick",0);
@@ -209,44 +223,84 @@ public class PlayNStateActivity extends AppCompatActivity {
                 stateHeader.setImageResource(R.drawable.s5);
                 break;
             case 6:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s6);
                 break;
             case 7:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s7);
                 break;
             case 8:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s8);
                 break;
             case 9:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s9);
                 break;
             case 10:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s10);
                 break;
             case 11:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s11);
                 break;
             case 12:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s12);
                 break;
             case 13:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s13);
                 break;
             case 14:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s14);
                 break;
             case 15:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s15);
                 break;
             case 16:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s16);
                 break;
             case 17:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s17);
                 break;
             case 18:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s18);
                 break;
             case 19:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s19);
                 break;
             case 20:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s20);
                 break;
             case 21:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s21);
                 break;
             case 22:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s22);
                 break;
             case 23:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s23);
                 break;
             case 24:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s24);
                 break;
             case 25:
+                imgQuestion.setImageResource(R.drawable.quest5);
+                stateHeader.setImageResource(R.drawable.s25);
                 break;
         }
     }
