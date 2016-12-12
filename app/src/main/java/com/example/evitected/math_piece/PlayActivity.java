@@ -132,7 +132,7 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
     }
-    //Update Developer Control. { Lock State Wait Update State } 12-12-2559 18.17
+    //Update Developer Control. { Lock State Wait Update State } 12-12-2559 18.15
     private boolean lockState(int position) {
         if (position == 6){
             return true;
