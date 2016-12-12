@@ -124,7 +124,7 @@ public class PlayActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }else{
-                    Toast.makeText(PlayActivity.this, "Error!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlayActivity.this, "Try to Complete State Before!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
