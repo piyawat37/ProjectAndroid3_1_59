@@ -10,12 +10,11 @@
         android:layout_height="match_parent"
         android:src="@drawable/play"
         android:scaleType="centerCrop"/>
-    <TextView
+    <ImageView
+        android:src="@drawable/s1"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/layout_header"
-        android:id="@+id/test"
-        android:text="TEST"
-        android:textSize="30sp"
+        android:id="@+id/stateHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <LinearLayout
