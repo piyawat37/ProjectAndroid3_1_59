@@ -14,7 +14,7 @@ import com.example.evitected.math_piece.ClassModel.DatabaseSQLite;
 public class MainActivity extends AppCompatActivity {
 
     private EditText etPlayerName;
-    private Button btnPlay, btnRanked, btnContact, btnExit;
+    private Button btnPlay, btnExit;
 
 
     DatabaseSQLite myDB;
@@ -47,18 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        btnRanked.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        btnContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void bindWidget() {
         btnPlay = (Button) findViewById(R.id.btnPlay);
-        btnRanked = (Button) findViewById(R.id.btnRanked);
-        btnContact = (Button) findViewById(R.id.btnContact);
         btnExit = (Button)findViewById(R.id.btnExit);
     }
 }
