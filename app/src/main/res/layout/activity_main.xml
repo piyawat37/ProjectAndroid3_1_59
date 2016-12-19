@@ -12,7 +12,7 @@
     </ImageView>
     <ImageView
         android:id="@+id/imgHeader"
-        android:src="@drawable/header2"
+        android:src="@drawable/header_puzzle"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -27,14 +27,6 @@
             android:id="@+id/btnPlay"
             style="@style/btn_brown"
             android:text="PLAY" />
-        <Button
-            android:id="@+id/btnRanked"
-            style="@style/btn_brown"
-            android:text="RANKING" />
-        <Button
-            android:id="@+id/btnContact"
-            style="@style/btn_brown"
-            android:text="CONTACT" />
         <Button
             android:id="@+id/btnExit"
             style="@style/btn_brown"
