@@ -22,11 +22,9 @@ import com.example.evitected.math_piece.PlayingState.PlayNStateActivity;
 
 public class PlayActivity extends AppCompatActivity {
 
-    private Button btnPlayBack;
     private GridView gvLevel;
     GridLevel gvObj = new GridLevel();
     int State;
-    int i;
     private DatabaseSQLite myDB;
 
 
@@ -39,12 +37,13 @@ public class PlayActivity extends AppCompatActivity {
 
         bindWidget();
         setFontAwesome();
-            CheckDevice_State();
-        createGridviewState();
+        CheckDevice_State();
     }
 
-    private void CheckDevice_State() {
+    //Fixed Bug Database Device add to State 19-12-2559 16.26
+    public void CheckDevice_State() {
         Cursor result = myDB.getDeviceID();
+        int i;
         int row = result.getCount();
         if(row > 0){
             State = result.getInt(2);
@@ -53,10 +52,13 @@ public class PlayActivity extends AppCompatActivity {
         }else{
             String device_id = Secure.getString(this.getContentResolver(), Secure.ANDROID_ID);
             boolean newDevice = myDB.insertNewDevice(device_id);
+            State = 1;
+            i = State;
         }
+        createGridviewState(i);
     }
 
-    private void createGridviewState() {
+    private void createGridviewState(int i) {
         if(i == 1){
             gvLevel.setAdapter(new CustomAdapter(getApplicationContext(), gvObj.getLockStateDefault()));
         }else if(i == 2){
@@ -127,6 +129,7 @@ public class PlayActivity extends AppCompatActivity {
                         finish();
                     }
                 }else{
+                    //Toast.makeText(PlayActivity.this, String.valueOf(State), Toast.LENGTH_SHORT).show();
                     Toast.makeText(PlayActivity.this, "Try to Complete State Before!!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -143,12 +146,11 @@ public class PlayActivity extends AppCompatActivity {
 
     private void setFontAwesome() {
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fontawesome-webfont.ttf");
-        btnPlayBack.setTypeface(font);
-        btnPlayBack.setText("\uf053");
+        //btnPlayBack.setTypeface(font);
+        //btnPlayBack.setText("\uf053");
     }
 
     private void bindWidget() {
         gvLevel = (GridView) findViewById(R.id.gvLevel);
-        btnPlayBack = (Button)findViewById( R.id.btnPlayBack);
     }
 }
