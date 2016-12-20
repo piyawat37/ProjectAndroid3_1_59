@@ -1,7 +1,9 @@
 package com.example.evitected.math_piece;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -10,6 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.evitected.math_piece.ClassModel.DatabaseSQLite;
+
+/*********************Plan in future
+ * 1. Checked Count of Answer { answer > 3 } will be  stop played 10 minute.
+ * 2. Make State.
+ * 3. Ranked Online INTERNET php -> JSON -> MySQL
+ *
+ * *************************************************/
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,9 +59,21 @@ public class MainActivity extends AppCompatActivity {
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onBackPressed();
             }
         });
+    }
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
+                    }
+                }).create().show();
     }
 
     private void bindWidget() {
